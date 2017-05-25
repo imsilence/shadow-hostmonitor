@@ -1,0 +1,16 @@
+{% extends "filemonitor/base.html" %}
+
+{% block container %}
+<div class="container-fluid ">
+    {{ block.super }}
+    <div class="row">
+        <form action="{% url 'filemonitor:setting' %}" method="POST" novalidate>
+            <table>
+                {% csrf_token %}
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="保存" />
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{
+    "paths" : [
+        {
+            "dir" : "/opt/",
+            "suffix" : "*",
+            "except_suffixs" : [],
+            "except_dirs" : []
+        }
+    ],
+    "interval" : 30
+}

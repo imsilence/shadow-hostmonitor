@@ -1,0 +1,29 @@
+{% extends "filemonitor/base.html" %}
+
+{% block container %}
+<div class="container-fluid ">
+    {{ block.super }}
+    <div class="row">
+        <table class="table table-bordered table-hover table-sm">
+            <thead class="thead-default">
+                <tr>
+                    <th>时间</th>
+                    <th>内容</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.adtime|date:'Y-m-d H:i:s' }}</td>
+                        <td>{{ event.content }}</td>
+                        <td>
+                            <a href="{% url 'filemonitor:deal_event' event.id %}">处理</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

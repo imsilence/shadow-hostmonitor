@@ -1,0 +1,30 @@
+{% extends "filemonitor/base.html" %}
+
+{% block container %}
+<div class="container-fluid ">
+    {{ block.super }}
+    <div class="row">
+        <table class="table table-bordered table-hover table-sm">
+            <thead class="thead-default">
+                <tr>
+                    <th>路径</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in files %}
+                    <tr>
+                        <td>{{ file.path }}</td>
+                        <td>{{ file.status_text }}</td>
+                        <td>
+                            <a href="{% url 'filemonitor:recover_file' file.pk %}">恢复</a>
+                            <a href="{% url 'filemonitor:ignore_file' file.pk %}">忽略</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
